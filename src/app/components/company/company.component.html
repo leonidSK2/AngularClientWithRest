@@ -1,0 +1,39 @@
+<h2>List of companies - {{ usertype }} profile </h2>
+<div *ngIf="isadmin==true">
+    <form #CompanyForm="ngForm">
+        <input type="text" name="companyName" placeholder="Company Name" [(ngModel)]="company.companyName"/><br/>
+        <input type="text" name="companyPassword" placeholder="Company Password" [(ngModel)]="company.password" /><br/>
+        <input type="text" name="companyEmail" placeholder="Company Email" [(ngModel)]="company.email" /><br/>
+        <input type="button" value="Save Company" (click)="saveCompany()" />
+        <button type="reset" (click)="!CompanyForm.reset()">Reset</button>
+    </form>
+    <br/>
+</div>
+
+<div *ngIf="isadmin==true">
+<input type="button" value="get companies" (click)="getCompanies()" />
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Company Name</th>
+        <th>Password</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor="let c of companies">
+        <td>{{ c.id }}</td>
+        <td>{{ c.companyName }}</td>
+        <td>{{ c.password }}</td>
+        <td>{{ c.email }}</td>
+        <td *ngIf="isadmin==true"><input type="button" value="delete" (click)="deleteCompany(c.id)" /></td>
+        
+    </tr>
+</table>
+</div>
+
+<div *ngIf="iscustomer==true">
+    <p>Customer do not have permission to see this page</p>
+</div>
+
+<div *ngIf="iscompany==true">
+    <p>Company do not have permission to see this page</p>
+</div>

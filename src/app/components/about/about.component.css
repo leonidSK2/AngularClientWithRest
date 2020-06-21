@@ -1,0 +1,10 @@
+div{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 30% 30% 30%;
+}
+
+div > *{
+    grid-column: span 1;
+    grid-row: span 1;
+}
